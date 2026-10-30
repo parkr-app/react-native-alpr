@@ -54,5 +54,5 @@ jobs:
           version=$(node -p "require('./package.json').version")
           args=()
           case "$version" in *-*) args+=(--tag next) ;; esac
-          [ "$DRY_RUN" = "true" ] && args+=(--dry-run)
-          npm publish "${args[@]}"
+          # npm publish --dry-run fails once the version is on npm, so a dry run only packs.
+          if [ "$DRY_RUN" = "true" ]; then npm pack --dry-run; else npm publish "${args[@]}"; fi
