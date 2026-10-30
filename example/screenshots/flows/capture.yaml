@@ -1,0 +1,21 @@
+appId: app.parkr.alpr.example
+name: Capture screenshots
+---
+- runFlow:
+    file: live-scan.yaml
+    env:
+      IMAGE: bmw-i3
+- runFlow:
+    file: live-scan.yaml
+    env:
+      IMAGE: nissan-e-nv200
+- runFlow:
+    file: photo.yaml
+    env:
+      IMAGE: tesla-model-s
+      ROW: EL 29094, EL 43232
+- runFlow:
+    file: photo.yaml
+    env:
+      IMAGE: nissan-leaf
+      ROW: EL 15211

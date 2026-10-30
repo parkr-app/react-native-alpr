@@ -1,0 +1,10 @@
+appId: app.parkr.alpr.example
+---
+- tapOn: Examples
+- tapOn: ${ROW}
+- extendedWaitUntil:
+    visible: .*confidence.*
+    timeout: 30000
+- waitForAnimationToEnd
+- takeScreenshot: ${OUTPUT}/photo-${IMAGE}
+- tapOn: ✕

@@ -1,0 +1,52 @@
+{
+  "expo": {
+    "name": "ALPR",
+    "slug": "react-native-alpr-example",
+    "scheme": "alpr-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "icon": "./assets/app.icon",
+      "supportsTablet": true,
+      "appleTeamId": "M8988PS6A4",
+      "bundleIdentifier": "app.parkr.alpr.example",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Used to pick a photo to scan for license plates.",
+        "CFBundleDisplayName": "ALPR"
+      }
+    },
+    "android": {
+      "package": "app.parkr.alpr.example",
+      "adaptiveIcon": {
+        "backgroundColor": "#000000",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "./plugins/withUIScene.js",
+      "./plugins/withAlprCoreSource.js",
+      [
+        "react-native-alpr",
+        {
+          "cameraPermission": "ALPR needs access to your camera to scan license plates."
+        }
+      ],
+      "expo-dev-client",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "ALPR needs access to your photos to scan a license plate."
+        }
+      ],
+      "expo-router"
+    ]
+  }
+}

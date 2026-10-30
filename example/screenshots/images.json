@@ -1,0 +1,427 @@
+[
+  {
+    "id": "bmw-i3",
+    "country": "NO",
+    "plates": "EL 40489",
+    "commons": "File:Elbilfestival i Geiranger BMW i3 cropped.jpg",
+    "author": "Norsk Elbilforening, derivative work by Mariordo",
+    "license": "CC BY 2.0",
+    "portrait": {
+      "centerX": 0.665
+    }
+  },
+  {
+    "id": "nissan-e-nv200",
+    "country": "NO",
+    "plates": "EL 64433",
+    "commons": "File:Nissan e-NV200 in Norway 2015.jpg",
+    "author": "Norsk Elbilforening",
+    "license": "CC BY 2.0",
+    "portrait": {
+      "centerX": 0.69
+    }
+  },
+  {
+    "id": "tesla-model-s",
+    "country": "NO",
+    "plates": "EL 29094, EL 43232",
+    "commons": "File:Elbilfestival i Geiranger two Tesla Model S electric cars.jpg",
+    "author": "Norsk Elbilforening",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "vw-e-golf",
+    "country": "NO",
+    "plates": "EL 42202",
+    "note": "Three cars",
+    "commons": "File:Elbilfestival i Geiranger VW e-Golf.jpg",
+    "author": "Norsk Elbilforening (Norwegian Electric Vehicle Association)",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "nissan-leaf",
+    "country": "NO",
+    "plates": "EL 15211",
+    "commons": "File:Nissan Leaf in bus lanes Norway.jpg",
+    "author": "Norsk Elbilforening (Norwegian Electric Vehicle Association)",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "skoda-kodiaq",
+    "country": "NO",
+    "plates": "BT 93066",
+    "commons": "File:Skoda Kodiaq TV2 Sporten Norway plate (48820056937).jpg",
+    "author": "crash71100",
+    "license": "CC0"
+  },
+  {
+    "id": "at-police",
+    "country": "AT",
+    "plates": "BP 91059",
+    "note": "Police car in a crowd",
+    "commons": "File:VW Amarok Austrian Police DSC 4672w.jpg",
+    "author": "P e z i",
+    "license": "CC BY-SA 3.0 at"
+  },
+  {
+    "id": "at-c-zero",
+    "country": "AT",
+    "plates": "DO 103 HK",
+    "commons": "File:Dornbirn-Citroen-Volkshilfe Vorarlberg-Pfandgebindesammelfahrzeug-03ASD.jpg",
+    "author": "Asurnipal",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "be-street",
+    "country": "BE",
+    "plates": "1-UBP-168",
+    "note": "Narrow street",
+    "commons": "File:Abdijstraat autos.jpg",
+    "author": "Bert76",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "ch-border-guard",
+    "country": "CH",
+    "plates": "SG 330384",
+    "note": "Indoors, angled",
+    "commons": "File:Swiss Border Guard BMW patrol car.jpg",
+    "author": "Kecko",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "cz-prague",
+    "country": "CZ",
+    "plates": "4AZ 4706, 7AA 0345, 2AT 3079",
+    "note": "Rain, several small plates",
+    "commons": "File:Prag, Wenzelsplatz, Ford Mustang -- 2019 -- 101913.jpg",
+    "author": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "cz-street",
+    "country": "CZ",
+    "plates": "2SN 0381",
+    "note": "Street scene",
+    "commons": "File:Řetězová, od Husovy.jpg",
+    "author": "ŠJů (cs:ŠJů)",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "de-mini-forest",
+    "country": "DE",
+    "plates": "MS WL 351",
+    "note": "Dusk, headlight glare",
+    "commons": "File:Dülmen, Kirchspiel, Börnste, BMW Mini -- 2019 -- 7207-13.jpg",
+    "author": "Dietmar Rabich",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "de-crashed",
+    "country": "DE",
+    "plates": "B DK 8800",
+    "note": "Crashed car, angled",
+    "commons": "File:Crashed black W211.jpg",
+    "author": "Matti Blume",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "dk-snow-street",
+    "country": "DK",
+    "plates": "YD 30895, BV 88891",
+    "note": "Snow",
+    "commons": "File:Cars with snow on Livjægergade.jpg",
+    "author": "Leif Jørgensen",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "dk-snow-car",
+    "country": "DK",
+    "plates": "BG 45402",
+    "note": "Car covered in snow",
+    "commons": "File:Snow on A.L. Drewsens Vej 01.jpg",
+    "author": "Leif Jørgensen",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "ee-night",
+    "country": "EE",
+    "plates": "839 MHT",
+    "note": "Night",
+    "commons": "File:Nissan Leaf 2012 6 Latvia.jpg",
+    "author": "Janitors (Kārlis Dambrāns). Attribution: Kaspars Garda",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "ee-skoda",
+    "country": "EE",
+    "plates": "983 PVT",
+    "commons": "File:Bolt Drive.JPG",
+    "author": "Dmitry G",
+    "license": "Public domain"
+  },
+  {
+    "id": "es-audi",
+    "country": "ES",
+    "plates": "8096 HHD",
+    "commons": "File:2012 Audi A5 - S-Line (8217616041).jpg",
+    "author": "David Villarreal Fernández",
+    "license": "CC BY-SA 2.0"
+  },
+  {
+    "id": "es-old-format",
+    "country": "ES",
+    "plates": "B-7374-AM",
+    "note": "Old format",
+    "commons": "File:Aston Martin Vantage, Pau 2015 (2).jpg",
+    "author": "Handelsgeselschaft",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "fi-snow",
+    "country": "FI",
+    "plates": "LPI-532",
+    "note": "Snow",
+    "commons": "File:2005 Honda HR-V.jpg",
+    "author": "Dogs.barking.duster.rolling",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "fi-export",
+    "country": "FI",
+    "plates": "A-5998",
+    "note": "Export plate",
+    "commons": "File:Car with export license plate of Finland.jpg",
+    "author": "Dickelbers",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "fr-indoor",
+    "country": "FR",
+    "plates": "HE-795-NQ",
+    "note": "Indoors, angled",
+    "commons": "File:2025 Peugeot e-308 Auto Zuerich 2025 DSC 3028.jpg",
+    "author": "Alexander Migl",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "fr-night",
+    "country": "FR",
+    "plates": "AV-718-AN",
+    "note": "Night",
+    "commons": "File:1956 Austin Healey 100M, 2015 Tour Auto, Toulouse.jpg",
+    "author": "Handelsgeselschaft",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "gb-rear",
+    "country": "GB",
+    "plates": "HJ58 YRZ",
+    "note": "From above",
+    "commons": "File:2008 Mercedes Benz C63 AMG - Flickr - The Car Spy.jpg",
+    "author": "The Car Spy",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "hr-sticker",
+    "country": "HR",
+    "plates": "ST 271-UK",
+    "note": "Sticker on the plate",
+    "commons": "File:Tablice Split 271-UK.JPG",
+    "author": "Quahadi Añtó",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "hu-street",
+    "country": "HU",
+    "plates": "IDD-373",
+    "commons": "File:A Suzuki swift outside Blaha Lujza tér, Budapest (cropped).jpg",
+    "author": "Slyronit",
+    "license": "CC BY 4.0"
+  },
+  {
+    "id": "ie-taxis",
+    "country": "IE",
+    "plates": "97-D-69058",
+    "note": "Distant, blurry",
+    "commons": "File:Dublin taxis in 2006.jpg",
+    "author": "Officer",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "ie-street",
+    "country": "IE",
+    "plates": "02-WH-3744",
+    "commons": "File:Michael-olearys-taxi-oleary-cabs-mg99-mercedes.jpg",
+    "author": "Irish Typepad",
+    "license": "CC BY-SA 2.0"
+  },
+  {
+    "id": "li-audi",
+    "country": "LI",
+    "plates": "FL 5778",
+    "commons": "File:FL 5778 Liechtenstein old style license plate.jpg",
+    "author": "Walser123",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "mx-dirty",
+    "country": "MX",
+    "plates": "VHB-128-B",
+    "note": "Dirty car",
+    "commons": "File:Coche sucio con placa de Sinaloa, 22 de mayo de 2026.jpg",
+    "author": "Roedor Pacheco",
+    "license": "CC0"
+  },
+  {
+    "id": "nl-angle",
+    "country": "NL",
+    "plates": "59-PB-VV",
+    "note": "Steep angle",
+    "commons": "File:2004 Fiat Multipla haarlem.nl deze auto rijdt op aardgas schooner stiller voordeliger (9161171278).jpg",
+    "author": "free photos & art",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "nl-royal",
+    "country": "NL",
+    "plates": "AA-64",
+    "note": "Royal plate",
+    "commons": "File:Car with Royal Dutch License plate AA-64.jpg",
+    "author": "Dickelbers",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "nz-rain",
+    "country": "NZ",
+    "plates": "NR334",
+    "note": "Pouring rain",
+    "commons": "File:1988 Peugeot 309 SRi (9692935574).jpg",
+    "author": "Riley from Christchurch, New Zealand",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "pl-spray",
+    "country": "PL",
+    "plates": "DKL AG66",
+    "note": "Water spray",
+    "commons": "File:2015 Kłodzko, ul. Dusznicka, myjnia samochodowa 02.jpg",
+    "author": "Jacek Halicki",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "pl-car-wash",
+    "country": "PL",
+    "plates": "OPR 26WC",
+    "note": "Inside a car wash",
+    "commons": "File:Car wash 2 Wiejska Street in Prudnik, 2020.06.15.jpg",
+    "author": "Wlodek k1",
+    "license": "CC BY 3.0"
+  },
+  {
+    "id": "pl-police",
+    "country": "PL",
+    "plates": "HPP A013",
+    "note": "Police car",
+    "commons": "File:Police car in Katowice (Kattowitz).jpg",
+    "author": "Pudelek (Marcin Szala)",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "pt-dirty",
+    "country": "PT",
+    "plates": "QL-09-31",
+    "note": "Dirty, parked for months",
+    "commons": "File:GolfEstacionadoMesesAFio.jpg",
+    "author": "Tuválkin from Lisboa, Portugal",
+    "license": "CC BY-SA 2.0"
+  },
+  {
+    "id": "pt-rear",
+    "country": "PT",
+    "plates": "68-15-LU",
+    "commons": "File:Audi RS2 Avant - Caramulo (48863506108).jpg",
+    "author": "Freggs",
+    "license": "CC BY-SA 2.0"
+  },
+  {
+    "id": "ro-traffic",
+    "country": "RO",
+    "plates": "NT 04 MJU",
+    "note": "Traffic",
+    "commons": "File:Mihai Eminescu street in Piatra Neamț.jpg",
+    "author": "Cristibur",
+    "license": "Public domain"
+  },
+  {
+    "id": "ro-above",
+    "country": "RO",
+    "plates": "IF 01 TMX",
+    "note": "From above",
+    "commons": "File:Electric Romanian car license plate.jpg",
+    "author": "Jean-Emmanuel Chevry",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "sk-snow",
+    "country": "SK",
+    "plates": "PO-417DU",
+    "note": "Snow",
+    "commons": "File:Mitsubishi Outlander CU0.jpg",
+    "author": "Midnight Runner",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "sk-glare",
+    "country": "SK",
+    "plates": "BA-694KD",
+    "note": "Headlight glare",
+    "commons": "File:Unmarked policecar slovakia passat b5 1.jpg",
+    "author": "Hundehalter",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "th-sunny",
+    "country": "TH",
+    "plates": "กง 498",
+    "note": "Thai script",
+    "commons": "File:Tuned Nissan Sunny (B14) 05.jpg",
+    "author": "M.rJirapat",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "tr-renault",
+    "country": "TR",
+    "plates": "06 MIY 50",
+    "note": "Two more plates far away",
+    "commons": "File:Renault 19 1.6e Europa Alizé.jpg",
+    "author": "Mr.choppers",
+    "license": "CC BY-SA 3.0"
+  },
+  {
+    "id": "ua-front",
+    "country": "UA",
+    "plates": "CA 9647 BO",
+    "commons": "File:Vehicle registration plates of Ukraine.JPG",
+    "author": "Andrew J.Kurbiko",
+    "license": "CC BY-SA 4.0"
+  },
+  {
+    "id": "us-parking",
+    "country": "US",
+    "plates": "TSLA S1, 6TNB644",
+    "note": "Vanity plate",
+    "commons": "File:Driving Google Self-Driving Car.jpg",
+    "author": "Steve Jurvetson",
+    "license": "CC BY 2.0"
+  },
+  {
+    "id": "us-black-plate",
+    "country": "US",
+    "plates": "RWDYBOY",
+    "note": "Black plate",
+    "commons": "File:License plates in Petaluma - July 2025 - Sarah Stierch 01.jpg",
+    "author": "Missvain",
+    "license": "CC0"
+  }
+]

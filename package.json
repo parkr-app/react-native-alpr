@@ -1,0 +1,121 @@
+{
+  "name": "react-native-alpr",
+  "version": "0.4.0",
+  "description": "On-device license plate recognition (ALPR/ANPR) for React Native and Expo",
+  "source": "./src/index.tsx",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/typescript/src/index.d.ts",
+      "default": "./lib/module/index.js"
+    },
+    "./package.json": "./package.json",
+    "./app.plugin.js": "./app.plugin.js"
+  },
+  "files": [
+    "src",
+    "lib",
+    "android/build.gradle",
+    "android/src",
+    "android/maven",
+    "ios/*.swift",
+    "ios/AlprKit.xcframework",
+    "plugin",
+    "app.plugin.js",
+    "expo-module.config.json",
+    "ReactNativeAlpr.podspec",
+    "LICENSE",
+    "SDK-LICENSE.md",
+    "THIRD_PARTY_NOTICES.md",
+    "!**/__tests__",
+    "!**/.*"
+  ],
+  "scripts": {
+    "example": "yarn workspace react-native-alpr-example",
+    "test": "jest",
+    "typecheck": "tsc --noEmit -p tsconfig.build.json",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "clean": "del-cli lib",
+    "prepare": "bob build",
+    "prepack": "scripts/check-binaries.sh",
+    "fetch-binaries": "scripts/fetch-binaries.sh"
+  },
+  "keywords": [
+    "react-native",
+    "expo",
+    "ios",
+    "android",
+    "alpr",
+    "anpr",
+    "license-plate",
+    "license-plate-recognition",
+    "number-plate",
+    "ocr"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkr-app/react-native-alpr.git"
+  },
+  "author": "Bileier AS <post@parkr.app> (https://alpr.parkr.app)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parkr-app/react-native-alpr/issues"
+  },
+  "homepage": "https://alpr.parkr.app",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@react-native/babel-preset": "0.88.0",
+    "@react-native/eslint-config": "0.88.0",
+    "@types/jest": "^29.5.14",
+    "@types/react": "~19.3.0",
+    "del-cli": "^8.0.1",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.7",
+    "expo-modules-core": "~58.0.22",
+    "jest": "^29.7.0",
+    "prettier": "^3.9.10",
+    "react": "19.3.0",
+    "react-native": "0.88.0",
+    "react-native-builder-bob": "^0.43.2",
+    "typescript": "~6.0.3"
+  },
+  "peerDependencies": {
+    "expo-modules-core": "*",
+    "react": "*",
+    "react-native": "*"
+  },
+  "workspaces": [
+    "example"
+  ],
+  "packageManager": "yarn@3.6.4",
+  "jest": {
+    "preset": "react-native",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/example/node_modules",
+      "<rootDir>/lib"
+    ]
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  }
+}

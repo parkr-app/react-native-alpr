@@ -1,0 +1,21 @@
+appId: app.parkr.alpr.example
+---
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - launchApp:
+          stopApp: true
+          arguments:
+            alprMock: ${IMAGE}
+            alprFps: '0'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - openLink: alpr-example://?mock=${IMAGE}&fps=0
+- extendedWaitUntil:
+    visible: .*confirmed.*
+    timeout: 30000
+- waitForAnimationToEnd
+- takeScreenshot: ${OUTPUT}/scan-${IMAGE}

@@ -1,0 +1,16 @@
+node_modules/
+.yarn/
+lib/
+
+# Native binaries, fetched with `yarn fetch-binaries`
+ios/AlprKit.xcframework/
+android/maven/
+__MACOSX/
+
+*.tgz
+
+.DS_Store
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.tsbuildinfo
