@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <radialGradient id="glow" cx="0.78" cy="0.55" r="0.55">
+      <stop offset="0" stop-color="#ffd60a" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffd60a" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 H0 V40" fill="none" stroke="#fff" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.7" stop-color="#0a0a0b" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0a0a0b" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-10%" width="160%" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18"/>
+      <feOffset dx="-12" dy="16"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.7"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="#0a0a0b"/>
+  <rect width="1280" height="640" fill="url(#grid)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+
+  <!-- Phones -->
+  <image href="shots/android-photo-tesla-model-s.png" x="740" y="140" width="294" height="584"/>
+  <image href="shots/ios-scan-bmw-i3.png" x="912" y="84" width="301" height="584" filter="url(#shadow)"/>
+  <rect y="520" width="1280" height="120" fill="url(#fade)"/>
+
+  <!-- Mark -->
+  <g transform="translate(72 84) scale(0.1)">
+    <path d="M92 382 V292 H202 M822 292 H932 V382 M932 642 V732 H822 M202 732 H92 V642" fill="none" stroke="#ffd60a" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="152" y="352" width="720" height="320" rx="64" fill="#ffd60a"/>
+    <path d="M254 590 L296 434 L338 590 M268 540 H324 M412 434 V590 H476 M550 590 V434 H586 A45 45 0 0 1 586 524 H550 M704 590 V434 H740 A45 45 0 0 1 740 524 H704 M736 524 L770 590" fill="none" stroke="#000" stroke-width="44" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="186" y="141" font-family="Helvetica Neue" font-weight="500" font-size="26" fill="#8e8e93" letter-spacing="0.5">parkr-app</text>
+
+  <!-- Title -->
+  <text x="80" y="268" font-family="Helvetica Neue" font-weight="bold" font-size="66" fill="#fff" letter-spacing="-1.5">react-native-<tspan fill="#ffd60a">alpr</tspan></text>
+  <text font-family="Helvetica Neue" font-size="30" fill="#c7c7cc">
+    <tspan x="80" y="328">On-device license plate recognition</tspan>
+    <tspan x="80" y="368">for React Native and Expo.</tspan>
+  </text>
+
+  <!-- Feature chips -->
+  <g font-family="Helvetica Neue" font-weight="500" font-size="20" fill="#fff">
+    <rect x="80" y="420" width="128" height="44" rx="22" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.14"/>
+    <text x="144" y="449" text-anchor="middle">Offline</text>
+    <rect x="220" y="420" width="122" height="44" rx="22" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.14"/>
+    <text x="281" y="449" text-anchor="middle">30 FPS</text>
+    <rect x="354" y="420" width="176" height="44" rx="22" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.14"/>
+    <text x="442" y="449" text-anchor="middle">65 countries</text>
+    <rect x="80" y="476" width="190" height="44" rx="22" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.14"/>
+    <text x="175" y="505" text-anchor="middle">iOS + Android</text>
+    <rect x="282" y="476" width="248" height="44" rx="22" fill="#ffd60a" fill-opacity="0.14" stroke="#ffd60a" stroke-opacity="0.5"/>
+    <text x="406" y="505" text-anchor="middle" fill="#ffd60a">Core ML · LiteRT</text>
+  </g>
+
+  <text x="80" y="580" font-family="Menlo" font-size="20" fill="#8e8e93"><tspan fill="#ffd60a">$</tspan> npx expo install react-native-alpr</text>
+</svg>

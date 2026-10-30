@@ -1,6 +1,16 @@
-# react-native-alpr
+<p align="center">
+  <img src=".github/assets/logo.svg" width="96" height="96" alt="react-native-alpr logo">
+</p>
 
-On-device license plate recognition (ALPR/ANPR) for React Native and Expo.
+<h1 align="center">react-native-alpr</h1>
+
+<p align="center">On-device license plate recognition (ALPR/ANPR) for React Native and Expo.</p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/react-native-alpr"><img src="https://img.shields.io/npm/v/react-native-alpr?color=ffd60a&labelColor=000" alt="npm version"></a>
+  <a href="https://github.com/parkr-app/react-native-alpr/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/parkr-app/react-native-alpr/ci.yml?branch=main&labelColor=000" alt="CI"></a>
+  <img src="https://img.shields.io/badge/platforms-iOS%20%7C%20Android-ffd60a?labelColor=000" alt="iOS and Android">
+</p>
 
 <p align="center">
   <img src="https://alpr.parkr.app/screenshots/ios-scan-bmw-i3.webp" width="200" alt="iPhone: live scan reading EL 40489">
