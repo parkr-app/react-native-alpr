@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+          # The cache probe runs before corepack enable and hits the runner's Yarn 1
+          package-manager-cache: false
       - run: corepack enable
       - run: yarn install --immutable
       - run: yarn tsc --noEmit -p tsconfig.json

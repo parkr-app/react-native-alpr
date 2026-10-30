@@ -28,6 +28,8 @@ jobs:
         with:
           # Node 24 ships npm 11, which trusted publishing requires (>= 11.5.1)
           node-version: 24
+          # The cache probe runs before corepack enable and hits the runner's Yarn 1
+          package-manager-cache: false
       - run: corepack enable
       - run: yarn install --immutable
 
