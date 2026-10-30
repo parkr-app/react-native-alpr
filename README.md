@@ -326,7 +326,7 @@ yarn example ios
 yarn example android
 ```
 
-`yarn fetch-binaries` downloads the AlprKit binaries for this version into `ios/` and `android/maven/`. `npm pack` and `npm publish` refuse to run without them, so a published package always bundles them. To try the PRO features in a release build of the example, set `ALPR_LICENSE_KEY` before `expo prebuild`. On a simulator, turn on "Use test image instead of camera" in the scanner settings, or launch with `-alprMock 1`.
+`yarn fetch-binaries` downloads AlprKit.xcframework for this version from the [alpr-ios](https://github.com/parkr-app/alpr-ios/releases) GitHub release into `ios/`. `npm pack` and `npm publish` refuse to run without it, so a published package always bundles it. Android resolves `app.parkr:alpr` from Maven Central. To try the PRO features in a release build of the example, set `ALPR_LICENSE_KEY` before `expo prebuild`. On a simulator, turn on "Use test image instead of camera" in the scanner settings, or launch with `-alprMock 1`.
 
 ## Support
 

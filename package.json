@@ -18,7 +18,6 @@
     "lib",
     "android/build.gradle",
     "android/src",
-    "android/maven",
     "ios/*.swift",
     "ios/AlprKit.xcframework",
     "plugin",

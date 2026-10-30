@@ -37,7 +37,6 @@ if (project.extensions.findByName("kotlin") == null) {
 
 def packageJson = new JsonSlurper().parse(file("../package.json"))
 def alprVersion = packageJson.version
-def localMaven = file("maven")
 // Set ALPR_CORE_DIR to the absolute path of a core checkout to build it from source instead of the binaries.
 def coreRoot = System.getenv("ALPR_CORE_DIR")
 def useCoreSource = coreRoot != null && coreRoot != ""
@@ -45,19 +44,6 @@ def coreDir = useCoreSource ? new File(coreRoot, "android/alpr") : null
 if (useCoreSource && !coreDir.isDirectory()) {
   throw new GradleException("ALPR_CORE_DIR is set, but ${coreDir} does not exist")
 }
-def alprMavenUrl = localMaven.exists() ? localMaven.toURI() : uri("https://alpr.parkr.app/maven")
-
-if (!useCoreSource) {
-  rootProject.allprojects { p ->
-    p.repositories {
-      maven {
-        url = alprMavenUrl
-        content { includeGroup "app.parkr" }
-      }
-    }
-  }
-}
-
 android {
   namespace "app.parkr.alpr.reactnative"
   compileSdkVersion getExtOrDefault("compileSdkVersion")
@@ -97,6 +83,7 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:1.5.1"
     implementation "androidx.camera:camera-view:1.5.1"
   } else {
+    // From Maven Central, which React Native and Expo apps include by default.
     implementation "app.parkr:alpr:${alprVersion}"
   }
 }
