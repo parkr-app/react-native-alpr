@@ -1,6 +1,6 @@
 {
   "name": "react-native-alpr",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "On-device license plate recognition (ALPR/ANPR) for React Native and Expo",
   "source": "./src/index.tsx",
   "main": "./lib/module/index.js",
