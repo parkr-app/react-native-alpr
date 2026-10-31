@@ -24,4 +24,5 @@ jobs:
       - run: yarn install --immutable
       - run: yarn tsc --noEmit -p tsconfig.json
       - run: yarn lint
+      - run: yarn test
       - run: yarn prepare

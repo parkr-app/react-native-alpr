@@ -1,6 +1,9 @@
 node_modules/
 .yarn/
 lib/
+android/build/
+android/.gradle/
+android/.kotlin/
 
 # Native binaries, fetched with `yarn fetch-binaries`
 ios/AlprKit.xcframework/

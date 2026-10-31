@@ -1,1 +1,0 @@
-app.parkr.alpr.reactnative
