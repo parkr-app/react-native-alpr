@@ -29,6 +29,8 @@
     "start": "expo start --dev-client",
     "android": "expo run:android",
     "ios": "expo run:ios",
+    "ios:device": "expo run:ios --device --configuration Release",
+    "android:device": "expo run:android --device --variant release",
     "web": "expo start --web",
     "prebuild": "expo prebuild --clean",
     "postinstall": "node -e \"const fs=require('fs');const p='../node_modules/react-native-alpr';if(!fs.existsSync(p))fs.symlinkSync('..',p)\""

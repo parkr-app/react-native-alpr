@@ -45,7 +45,30 @@ One license key covers your app on every platform.
 
 The model reads plates from 65 countries and reports the country of each plate as `country` and its ISO code as `countryCode`:
 
-🇦🇱 Albania (`AL`), 🇦🇩 Andorra (`AD`), 🇦🇷 Argentina (`AR`), 🇦🇲 Armenia (`AM`), 🇦🇺 Australia (`AU`), 🇦🇹 Austria (`AT`), 🇦🇿 Azerbaijan (`AZ`), 🇧🇭 Bahrain (`BH`), 🇧🇾 Belarus (`BY`), 🇧🇪 Belgium (`BE`), 🇧🇦 Bosnia and Herzegovina (`BA`), 🇧🇷 Brazil (`BR`), 🇧🇬 Bulgaria (`BG`), 🇰🇭 Cambodia (`KH`), 🇨🇦 Canada (`CA`), 🇭🇷 Croatia (`HR`), 🇨🇾 Cyprus (`CY`), 🇨🇿 Czech Republic (`CZ`), 🇩🇰 Denmark (`DK`), 🇪🇪 Estonia (`EE`), 🇫🇮 Finland (`FI`), 🇫🇷 France (`FR`), 🇬🇪 Georgia (`GE`), 🇩🇪 Germany (`DE`), 🇬🇮 Gibraltar (`GI`), 🇬🇷 Greece (`GR`), 🇬🇬 Guernsey (`GG`), 🇭🇺 Hungary (`HU`), 🇮🇸 Iceland (`IS`), 🇮🇩 Indonesia (`ID`), 🇮🇪 Ireland (`IE`), 🇮🇱 Israel (`IL`), 🇮🇹 Italy (`IT`), 🇱🇻 Latvia (`LV`), 🇱🇮 Liechtenstein (`LI`), 🇱🇹 Lithuania (`LT`), 🇱🇺 Luxembourg (`LU`), 🇲🇾 Malaysia (`MY`), 🇲🇹 Malta (`MT`), 🇲🇽 Mexico (`MX`), 🇲🇩 Moldova (`MD`), 🇲🇨 Monaco (`MC`), 🇲🇪 Montenegro (`ME`), 🇳🇱 Netherlands (`NL`), 🇳🇿 New Zealand (`NZ`), 🇲🇰 North Macedonia (`MK`), 🇳🇴 Norway (`NO`), 🇵🇱 Poland (`PL`), 🇵🇹 Portugal (`PT`), 🇶🇦 Qatar (`QA`), 🇷🇴 Romania (`RO`), 🇸🇲 San Marino (`SM`), 🇷🇸 Serbia (`RS`), 🇸🇬 Singapore (`SG`), 🇸🇰 Slovakia (`SK`), 🇸🇮 Slovenia (`SI`), 🇪🇸 Spain (`ES`), 🇸🇪 Sweden (`SE`), 🇨🇭 Switzerland (`CH`), 🇹🇭 Thailand (`TH`), 🇹🇷 Turkey (`TR`), 🇺🇦 Ukraine (`UA`), 🇬🇧 United Kingdom (`GB`), 🇺🇸 United States (`US`), 🇻🇳 Vietnam (`VN`).
+| Country | Code | Country | Code | Country | Code |
+|---|---|---|---|---|---|
+| 🇦🇱 Albania | `AL` | 🇬🇪 Georgia | `GE` | 🇳🇿 New Zealand | `NZ` |
+| 🇦🇩 Andorra | `AD` | 🇩🇪 Germany | `DE` | 🇲🇰 North Macedonia | `MK` |
+| 🇦🇷 Argentina | `AR` | 🇬🇮 Gibraltar | `GI` | 🇳🇴 Norway | `NO` |
+| 🇦🇲 Armenia | `AM` | 🇬🇷 Greece | `GR` | 🇵🇱 Poland | `PL` |
+| 🇦🇺 Australia | `AU` | 🇬🇬 Guernsey | `GG` | 🇵🇹 Portugal | `PT` |
+| 🇦🇹 Austria | `AT` | 🇭🇺 Hungary | `HU` | 🇶🇦 Qatar | `QA` |
+| 🇦🇿 Azerbaijan | `AZ` | 🇮🇸 Iceland | `IS` | 🇷🇴 Romania | `RO` |
+| 🇧🇭 Bahrain | `BH` | 🇮🇩 Indonesia | `ID` | 🇸🇲 San Marino | `SM` |
+| 🇧🇾 Belarus | `BY` | 🇮🇪 Ireland | `IE` | 🇷🇸 Serbia | `RS` |
+| 🇧🇪 Belgium | `BE` | 🇮🇱 Israel | `IL` | 🇸🇬 Singapore | `SG` |
+| 🇧🇦 Bosnia and Herzegovina | `BA` | 🇮🇹 Italy | `IT` | 🇸🇰 Slovakia | `SK` |
+| 🇧🇷 Brazil | `BR` | 🇱🇻 Latvia | `LV` | 🇸🇮 Slovenia | `SI` |
+| 🇧🇬 Bulgaria | `BG` | 🇱🇮 Liechtenstein | `LI` | 🇪🇸 Spain | `ES` |
+| 🇰🇭 Cambodia | `KH` | 🇱🇹 Lithuania | `LT` | 🇸🇪 Sweden | `SE` |
+| 🇨🇦 Canada | `CA` | 🇱🇺 Luxembourg | `LU` | 🇨🇭 Switzerland | `CH` |
+| 🇭🇷 Croatia | `HR` | 🇲🇾 Malaysia | `MY` | 🇹🇭 Thailand | `TH` |
+| 🇨🇾 Cyprus | `CY` | 🇲🇹 Malta | `MT` | 🇹🇷 Turkey | `TR` |
+| 🇨🇿 Czech Republic | `CZ` | 🇲🇽 Mexico | `MX` | 🇺🇦 Ukraine | `UA` |
+| 🇩🇰 Denmark | `DK` | 🇲🇩 Moldova | `MD` | 🇬🇧 United Kingdom | `GB` |
+| 🇪🇪 Estonia | `EE` | 🇲🇨 Monaco | `MC` | 🇺🇸 United States | `US` |
+| 🇫🇮 Finland | `FI` | 🇲🇪 Montenegro | `ME` | 🇻🇳 Vietnam | `VN` |
+| 🇫🇷 France | `FR` | 🇳🇱 Netherlands | `NL` |  |  |
 
 ## Installation
 
@@ -327,6 +350,15 @@ yarn example android
 ```
 
 `yarn fetch-binaries` downloads AlprKit.xcframework for this version from the [alpr-ios](https://github.com/parkr-app/alpr-ios/releases) GitHub release into `ios/`. `npm pack` and `npm publish` refuse to run without it, so a published package always bundles it. Android resolves `app.parkr:alpr` from Maven Central. To try the PRO features in a release build of the example, set `ALPR_LICENSE_KEY` before `expo prebuild`. On a simulator, turn on "Use test image instead of camera" in the scanner settings, or launch with `-alprMock 1`.
+
+To run a release build on a connected phone, which bundles the JavaScript and needs no Metro server:
+
+```sh
+yarn example ios:device
+yarn example android:device
+```
+
+Both list the connected devices to pick from. On iPhone, turn on Developer Mode (Settings → Privacy & Security), and change `appleTeamId` and `bundleIdentifier` in [`example/app.json`](example/app.json) to your own Apple team and an id it can sign, then run `yarn example expo prebuild` again. On Android, turn on USB debugging.
 
 ## Support
 
