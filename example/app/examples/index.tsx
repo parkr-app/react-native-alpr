@@ -1,43 +1,11 @@
-import { useCallback, useState } from 'react';
+import { useRouter } from 'expo-router';
 import { Image, Pressable, SectionList, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { scanImage, type DetectedPlate } from 'react-native-alpr';
-import { ScanResult } from '../components/ScanResult';
-import { toAlprConfig, useAlprSettings } from '../contexts/AlprSettingsContext';
-import { TEST_IMAGE_SECTIONS, resolveTestImageUri } from '../testImages';
+import { TEST_IMAGE_SECTIONS } from '../../testImages';
 
 export default function ExamplesScreen() {
   const { top, bottom } = useSafeAreaInsets();
-  const { settings } = useAlprSettings();
-  const [uri, setUri] = useState<string | null>(null);
-  const [plates, setPlates] = useState<DetectedPlate[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
-
-  const selectImage = useCallback(async (module: number) => {
-    const resolvedUri = await resolveTestImageUri(module);
-    setUri(resolvedUri);
-    setPlates(null);
-    setError(null);
-    try {
-      setPlates(await scanImage(resolvedUri, toAlprConfig(settings)));
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-    }
-  }, [settings]);
-
-  if (uri) {
-    return (
-      <View style={styles.container}>
-        <ScanResult uri={uri} plates={plates} error={error} />
-        <Pressable
-          style={[styles.closeButton, { top: top + 16 }]}
-          onPress={() => setUri(null)}
-        >
-          <Text style={styles.closeButtonText}>✕</Text>
-        </Pressable>
-      </View>
-    );
-  }
+  const router = useRouter();
 
   return (
     <SectionList
@@ -49,8 +17,8 @@ export default function ExamplesScreen() {
       renderSectionHeader={({ section: { title } }) => (
         <Text style={styles.sectionHeader}>{title}</Text>
       )}
-      renderItem={({ item: { plates, note, module, thumbnail } }) => (
-        <Pressable style={styles.row} onPress={() => selectImage(module)}>
+      renderItem={({ item: { id, plates, note, thumbnail } }) => (
+        <Pressable style={styles.row} onPress={() => router.push(`/examples/${id}`)}>
           <Image source={thumbnail} style={styles.thumbnail} />
           <View style={styles.rowBody}>
             <Text style={styles.rowText}>{plates}</Text>
@@ -64,7 +32,6 @@ export default function ExamplesScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'black' },
   listBackground: { backgroundColor: '#f3f4f6' },
   list: { padding: 16, flexGrow: 1 },
   sectionHeader: {
@@ -90,15 +57,4 @@ const styles = StyleSheet.create({
   rowText: { fontSize: 16, color: '#111827', fontWeight: '500' },
   rowNote: { fontSize: 13, color: '#6b7280', marginTop: 2 },
   rowChevron: { fontSize: 18, color: '#9ca3af', marginLeft: 8 },
-  closeButton: {
-    position: 'absolute',
-    right: 16,
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(17,24,39,0.85)',
-  },
-  closeButtonText: { color: 'white', fontSize: 16, fontWeight: '700' },
 });

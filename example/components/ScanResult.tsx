@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { DetectedPlate } from 'react-native-alpr';
+import { ZoomableView } from './ZoomableView';
 
 type Props = {
   uri: string;
@@ -29,10 +30,7 @@ export function ScanResult({ uri, plates, error }: Props) {
 
   return (
     <View style={[styles.container, { paddingBottom: 16 + insets.bottom }]}>
-      <View
-        style={styles.imageContainer}
-        onLayout={(e) => setViewSize(e.nativeEvent.layout)}
-      >
+      <ZoomableView style={styles.imageContainer} onLayout={setViewSize}>
         <Image
           source={{ uri }}
           style={StyleSheet.absoluteFill}
@@ -64,7 +62,7 @@ export function ScanResult({ uri, plates, error }: Props) {
               ) : null}
             </View>
           ))}
-      </View>
+      </ZoomableView>
 
       <View style={[styles.results]}>
         {error ? (
