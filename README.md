@@ -27,7 +27,7 @@
 - One-shot scanning that waits for a certain read instead of taking the first blurry frame
 - Recognition in photos
 
-**The basic scanner is free, also in production.** PRO features need a license key in release builds and work without one in development builds. See [Licensing](#licensing) and [alpr.parkr.app](https://alpr.parkr.app).
+**The basic scanner is free, also in production.** PRO features need a license key in release builds and work without one in development builds. See [Licensing](#licensing) and [alpr.parkr.app](https://alpr.parkr.app/?utm_source=readme-react-native).
 
 ## Platforms
 
@@ -229,7 +229,7 @@ Without a key, release builds fall back quietly and never crash:
 - `scanImage` rejects with `ERR_LICENSE_REQUIRED`
 - each disabled feature is logged once
 
-Get a key at [alpr.parkr.app](https://alpr.parkr.app): PRO is $1,499 one-time for one app on every platform. There is no trial; development builds unlock every PRO feature, so you can build and test with them before you buy. A key is bound to your app ids and works on every platform and framework.
+Get a key at [alpr.parkr.app](https://alpr.parkr.app/?utm_source=readme-react-native): PRO is $1,499 one-time for one app on every platform. There is no trial; development builds unlock every PRO feature, so you can build and test with them before you buy. A key is bound to your app ids and works on every platform and framework.
 
 - **Perpetual:** a key works forever with every SDK version released during its updates period (one year, renewable).
 - **Dev and staging ids:** variants such as `.dev` and `.staging` can be added at no cost.
@@ -364,4 +364,4 @@ Both list the connected devices to pick from. On iPhone, turn on Developer Mode 
 
 Questions and bugs: [GitHub issues](https://github.com/parkr-app/react-native-alpr/issues). Licensing: [post@parkr.app](mailto:post@parkr.app).
 
-Made by [Bileier AS](https://alpr.parkr.app). Models from [fast-plate-ocr](https://github.com/ankandrew/fast-plate-ocr) and [open-image-models](https://github.com/ankandrew/open-image-models) by ankandrew.
+Made by [Bileier AS](https://alpr.parkr.app/?utm_source=readme-react-native). Models from [fast-plate-ocr](https://github.com/ankandrew/fast-plate-ocr) and [open-image-models](https://github.com/ankandrew/open-image-models) by ankandrew.

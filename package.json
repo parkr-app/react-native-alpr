@@ -61,7 +61,7 @@
   "bugs": {
     "url": "https://github.com/parkr-app/react-native-alpr/issues"
   },
-  "homepage": "https://alpr.parkr.app",
+  "homepage": "https://alpr.parkr.app/?utm_source=npm-react-native",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
