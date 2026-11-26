@@ -76,8 +76,7 @@ The model reads plates from 65 countries and reports the country of each plate a
 npx expo install react-native-alpr
 ```
 
-It works in Expo and React-Native. It does not run in Expo Go.
-
+It works in Expo and React Native. It does not run in Expo Go.
 
 Add the config plugin to `app.json`:
 
@@ -127,25 +126,6 @@ function Scanner() {
     />
   );
 }
-```
-
-## Example app
-
-The [`example/`](example) folder has a live scanner, a photo picker and sample images.
-
-```sh
-yarn install
-yarn fetch-binaries
-yarn example expo prebuild
-yarn example ios
-yarn example android
-```
-
-To run a release build on a connected phone, which bundles the JavaScript and needs no Metro server:
-
-```sh
-yarn example ios:device
-yarn example android:device
 ```
 
 ### Events
@@ -226,6 +206,25 @@ Simulators have no camera. Pass `mockImage` to run the live pipeline on a still 
 
 ```tsx
 <AlprCameraView mockImage={__DEV__ && isSimulator ? require('./plate.jpg') : undefined} />
+```
+
+## Example app
+
+The [`example/`](example) folder has a live scanner, a photo picker and sample images.
+
+```sh
+yarn install
+yarn fetch-binaries
+yarn example expo prebuild
+yarn example ios
+yarn example android
+```
+
+To run a release build on a connected phone, which bundles the JavaScript and needs no Metro server:
+
+```sh
+yarn example ios:device
+yarn example android:device
 ```
 
 ## Licensing
