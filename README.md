@@ -76,9 +76,8 @@ The model reads plates from 65 countries and reports the country of each plate a
 npx expo install react-native-alpr
 ```
 
-This is an Expo module. It works in Expo dev clients and in bare React Native apps with [Expo modules installed](https://docs.expo.dev/bare/installing-expo-modules/) (`npx install-expo-modules`). It does not run in Expo Go.
+It works in Expo and React-Native. It does not run in Expo Go.
 
-The package includes the native SDK (a signed `AlprKit.xcframework` and the `app.parkr:alpr` AAR) with its models, so installing and building need no extra downloads or repositories.
 
 Add the config plugin to `app.json`:
 
@@ -130,7 +129,24 @@ function Scanner() {
 }
 ```
 
-Boxes and labels are drawn natively on the preview. Boxes are smoothed and stay put through a missed frame, and a label shows `…` until the plate's text is confirmed.
+## Example app
+
+The [`example/`](example) folder has a live scanner, a photo picker and sample images.
+
+```sh
+yarn install
+yarn fetch-binaries
+yarn example expo prebuild
+yarn example ios
+yarn example android
+```
+
+To run a release build on a connected phone, which bundles the JavaScript and needs no Metro server:
+
+```sh
+yarn example ios:device
+yarn example android:device
+```
 
 ### Events
 
@@ -214,12 +230,7 @@ Simulators have no camera. Pass `mockImage` to run the live pipeline on a still 
 
 ## Licensing
 
-| | Development builds | Release builds without a key | Release builds with a key |
-| --- | --- | --- | --- |
-| Live scanning, `onPlates`, `onPlatesRaw`, default overlay | ✓ | ✓ | ✓ |
-| PRO features | ✓ | Off | ✓ |
-
-Development builds are debug builds, simulators and emulators, TestFlight and ad-hoc builds. When a development build uses PRO features without a valid key, the camera view shows a small badge listing what will be off in release.
+Development builds are debug builds, simulators and emulators, TestFlight and ad-hoc builds.
 
 Without a key, release builds fall back quietly and never crash:
 
@@ -229,10 +240,7 @@ Without a key, release builds fall back quietly and never crash:
 - `scanImage` rejects with `ERR_LICENSE_REQUIRED`
 - each disabled feature is logged once
 
-Get a key at [alpr.parkr.app](https://alpr.parkr.app/?utm_source=readme-react-native): PRO is $1,499 one-time for one app on every platform. There is no trial; development builds unlock every PRO feature, so you can build and test with them before you buy. A key is bound to your app ids and works on every platform and framework.
-
-- **Perpetual:** a key works forever with every SDK version released during its updates period (one year, renewable).
-- **Dev and staging ids:** variants such as `.dev` and `.staging` can be added at no cost.
+Get a key at [alpr.parkr.app](https://alpr.parkr.app/?utm_source=readme-react-native).
 
 Add the key with the config plugin:
 
@@ -246,8 +254,6 @@ Without Expo prebuild, add `AlprLicenseKey` (String) to `Info.plist`, and to `An
 <meta-data android:name="app.parkr.alpr.LICENSE_KEY" android:value="eyJ2Ijox..." />
 ```
 
-Release builds print a warning at build time when the key is missing or doesn't match the app id.
-
 The JavaScript and bridge code in this repository is MIT licensed. The bundled AlprKit native SDK is licensed under the [Parkr ALPR SDK License Agreement](SDK-LICENSE.md). Bundled models: see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Telemetry
@@ -255,10 +261,7 @@ The JavaScript and bridge code in this repository is MIT licensed. The bundled A
 The SDK sends small anonymous reports to `alpr.parkr.app`. They never contain device or user identifiers, images or plate data.
 
 - **Build time:** when the app is built (Expo prebuild, Gradle, CocoaPods), it sends the app id, platform, build type, versions and license state. Set `DO_NOT_TRACK=1` or `ALPR_TELEMETRY=0` in the build environment to turn it off.
-- **Runtime:** at most once a day per device, the app sends its app id and version, platform, OS and SDK versions, build type, license state and the names of disabled PRO features.
-  - It is on by default without a license and off by default with one.
-  - Change it with `setTelemetryEnabled(false)` at any time, or the plugin's `telemetry` option.
-  - Declare it in App Store privacy details as diagnostic data not linked to the user. The iOS SDK ships a privacy manifest.
+- **Runtime:** at most once a day per device, the app sends its app id and version, platform, OS and SDK versions, build type, license state and the names of disabled PRO features. Change it with `setTelemetryEnabled(false)` or the plugin's `telemetry` option.
 
 ## API
 
@@ -336,29 +339,6 @@ Errors from `scanImage` and `onError` carry a `code`:
 | `ERR_MODEL_LOAD` | The bundled models could not be loaded. |
 | `ERR_CAMERA` | No camera, or no camera permission. |
 | `ERR_FILE` | The image could not be read. |
-
-## Example app
-
-The [`example/`](example) folder has a live scanner, a photo picker and sample images.
-
-```sh
-yarn install
-yarn fetch-binaries
-yarn example expo prebuild
-yarn example ios
-yarn example android
-```
-
-`yarn fetch-binaries` downloads AlprKit.xcframework for this version from the [alpr-ios](https://github.com/parkr-app/alpr-ios/releases) GitHub release into `ios/`. `npm pack` and `npm publish` refuse to run without it, so a published package always bundles it. Android resolves `app.parkr:alpr` from Maven Central. To try the PRO features in a release build of the example, set `ALPR_LICENSE_KEY` before `expo prebuild`. On a simulator, turn on "Use test image instead of camera" in the scanner settings, or launch with `-alprMock 1`.
-
-To run a release build on a connected phone, which bundles the JavaScript and needs no Metro server:
-
-```sh
-yarn example ios:device
-yarn example android:device
-```
-
-Both list the connected devices to pick from. On iPhone, turn on Developer Mode (Settings → Privacy & Security), and change `appleTeamId` and `bundleIdentifier` in [`example/app.json`](example/app.json) to your own Apple team and an id it can sign, then run `yarn example expo prebuild` again. On Android, turn on USB debugging.
 
 ## Support
 
