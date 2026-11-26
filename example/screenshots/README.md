@@ -16,7 +16,7 @@ The script builds the example app in Release, installs it, sets a clean status b
 | `output/<platform>/*.png` | Raw screenshots |
 | `output/web/<platform>-*.webp` | Each screenshot in a phone frame, for the README and alpr.parkr.app |
 
-Requirements: Xcode with an `iPhone 17 Pro` simulator (`IOS_DEVICE` to change), an Android emulator (`ANDROID_AVD`, default `Pixel_9`), Maestro, ImageMagick 7 and Node. Set `ALPR_LICENSE_KEY` to a key for `app.parkr.alpr.example`, otherwise Pro features are limited in the Android release build. iOS simulators are always unlocked.
+Requirements: Xcode with an `iPhone 17 Pro` simulator (`IOS_DEVICE` to change), an Android emulator (`ANDROID_AVD`, default `Pixel_9`), Maestro, ImageMagick 7 and Node.
 
 ## How it works
 

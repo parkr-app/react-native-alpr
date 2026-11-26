@@ -9,8 +9,6 @@ Builds the example app in Release, installs it on a simulator or emulator,
 drives it with Maestro and writes screenshots to screenshots/output.
 
 Environment:
-  ALPR_LICENSE_KEY  License key for app.parkr.alpr.example. Android release
-                    builds need it for Pro features; iOS simulators are always unlocked.
   IOS_DEVICE        Simulator name (default: iPhone 17 Pro)
   ANDROID_AVD       Emulator to boot when none is running (default: Pixel_9)
 EOF
@@ -34,10 +32,6 @@ app_id=app.parkr.alpr.example
 ios_device=${IOS_DEVICE:-iPhone 17 Pro}
 android_avd=${ANDROID_AVD:-Pixel_9}
 export LANG=en_US.UTF-8
-
-if [ -z "${ALPR_LICENSE_KEY:-}" ] && [ "$platforms" != ios ]; then
-  echo "warning: ALPR_LICENSE_KEY is not set. Android release builds will show the license badge." >&2
-fi
 
 prebuild() {
   if [ "$build" = 1 ]; then

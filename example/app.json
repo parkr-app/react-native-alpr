@@ -36,7 +36,8 @@
       [
         "react-native-alpr",
         {
-          "cameraPermission": "ALPR needs access to your camera to scan license plates."
+          "cameraPermission": "ALPR needs access to your camera to scan license plates.",
+          "licenseKey": "eyJ2IjoxLCJraWQiOiIyMDI2LTEiLCJzdWIiOiJwYXJrciIsImlkcyI6WyJhcHAucGFya3IuYWxwci5leGFtcGxlIl0sInBsYW4iOiJpbnRlcm5hbCIsInVwZGF0ZXNVbnRpbCI6IjIwOTktMTItMzEifQ.L4PjjA1zXj6rDOsboogVdrDd-gdKdGPpDSeAEdOllVFwlHlBiErrLyeu-yMcVXumCwHSW8TJ9ktS2vngKU4hBw"
         }
       ],
       "expo-dev-client",
