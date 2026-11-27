@@ -62,6 +62,9 @@ android {
     project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
       compilerOptions.freeCompilerArgs.add("-Xskip-metadata-version-check")
     }
+    defaultConfig {
+      consumerProguardFiles "${coreDir}/consumer-rules.pro"
+    }
     sourceSets {
       main {
         java.srcDirs += "${coreDir}/src/main/java"
