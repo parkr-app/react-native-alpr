@@ -25,6 +25,10 @@ export interface FrameInfo {
 
 export type Accelerator = 'gpu' | 'cpu';
 
+export interface LoadModelsOptions {
+  accelerator?: Accelerator;
+}
+
 export interface AlprConfig {
   detectionThreshold?: number;
   ocrThreshold?: number;
@@ -45,23 +49,8 @@ export interface PlateOverlayStyle {
   showConfidence?: boolean;
 }
 
-export type AlprFeature =
-  | 'scanImage'
-  | 'throttle'
-  | 'zoom'
-  | 'torch'
-  | 'styling'
-  | 'accelerator'
-  | 'region'
-  | 'thresholds'
-  | 'onPlate'
-  | 'onScan'
-  | 'showOverlay'
-  | 'showScanRegion';
-
 export type AlprErrorCode =
   | 'ERR_LICENSE_REQUIRED'
-  | 'ERR_LICENSE_INVALID'
   | 'ERR_MODEL_LOAD'
   | 'ERR_CAMERA'
   | 'ERR_FILE';

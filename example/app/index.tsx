@@ -70,7 +70,7 @@ export default function ScanScreen() {
         showFps={showFps}
         torch={torch}
         zoom={zoom}
-        scanRegion={restrictRegion ? SCAN_REGION : undefined}
+        region={restrictRegion ? SCAN_REGION : undefined}
         mockImage={mockCamera ? mockImage : undefined}
         onPlates={setPlates}
         onScan={config.singleScan ? setScanned : undefined}

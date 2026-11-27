@@ -61,8 +61,8 @@ public class AlprModule: Module {
       Prop("mockImage") { (view: AlprExpoView, value: String?) in view.camera.mockImage = value }
       Prop("torch") { (view: AlprExpoView, value: Bool) in view.camera.torch = value }
       Prop("zoom") { (view: AlprExpoView, value: Double) in view.camera.zoom = value }
-      Prop("scanRegion") { (view: AlprExpoView, value: BoundingBoxRecord?) in view.camera.scanRegion = value?.rect }
-      Prop("showScanRegion") { (view: AlprExpoView, value: Bool) in view.camera.showScanRegion = value }
+      Prop("region") { (view: AlprExpoView, value: BoundingBoxRecord?) in view.camera.region = value?.rect }
+      Prop("showRegion") { (view: AlprExpoView, value: Bool) in view.camera.showRegion = value }
       Prop("overlayStyle") { (view: AlprExpoView, value: OverlayStyleRecord?) in view.camera.overlayStyle = value?.style }
       Prop("detectionThreshold") { (view: AlprExpoView, value: Double?) in view.camera.detectionThreshold = value.map(Float.init) }
       Prop("ocrThreshold") { (view: AlprExpoView, value: Double?) in view.camera.ocrThreshold = value.map(Float.init) }

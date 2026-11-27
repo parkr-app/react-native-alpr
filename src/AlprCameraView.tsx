@@ -13,8 +13,8 @@ export type AlprCameraViewProps = {
   mockImage?: string | number;
   torch?: boolean;
   zoom?: number;
-  scanRegion?: BoundingBox;
-  showScanRegion?: boolean;
+  region?: BoundingBox;
+  showRegion?: boolean;
   overlayStyle?: PlateOverlayStyle;
   detectionThreshold?: number;
   ocrThreshold?: number;
@@ -89,7 +89,7 @@ export function AlprCameraView({
   throttle = 200,
   showFps = false,
   showOverlay = true,
-  showScanRegion = true,
+  showRegion = true,
   torch = false,
   zoom = 1,
   overlayStyle,
@@ -122,7 +122,7 @@ export function AlprCameraView({
       throttle={throttle}
       showFps={showFps}
       showOverlay={showOverlay}
-      showScanRegion={showScanRegion}
+      showRegion={showRegion}
       torch={torch}
       zoom={zoom}
       overlayStyle={nativeOverlayStyle}

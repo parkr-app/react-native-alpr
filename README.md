@@ -187,10 +187,10 @@ const plates = await scanImage(photoUri);
 ### Torch, zoom and scan region (PRO)
 
 ```tsx
-<AlprCameraView torch={torchOn} zoom={2} scanRegion={{ x: 0.05, y: 0.4, width: 0.9, height: 0.25 }} />
+<AlprCameraView torch={torchOn} zoom={2} region={{ x: 0.05, y: 0.4, width: 0.9, height: 0.25 }} />
 ```
 
-`scanRegion` is normalized to the view. Only that part of the frame goes to the detector. That is faster, and it helps with distant plates because the crop is scaled up to the model's input size. The area outside is dimmed; `showScanRegion={false}` (PRO) turns that off.
+`region` is normalized to the view. Only that part of the frame goes to the detector. That is faster, and it helps with distant plates because the crop is scaled up to the model's input size. The area outside is dimmed; `showRegion={false}` (PRO) turns that off.
 
 ### Overlay style (PRO)
 
@@ -280,8 +280,8 @@ The SDK sends small anonymous reports to `alpr.parkr.app`. They never contain de
 | `ocrThreshold` | `number` | `0.3` | Minimum OCR confidence. PRO |
 | `torch` | `boolean` | `false` | PRO |
 | `zoom` | `number` | `1` | Clamped to what the device supports. PRO |
-| `scanRegion` | `BoundingBox` | | Normalized `0..1`. PRO |
-| `showScanRegion` | `boolean` | `true` | Dims the area outside `scanRegion`. PRO to turn off |
+| `region` | `BoundingBox` | | Normalized `0..1`. PRO |
+| `showRegion` | `boolean` | `true` | Dims the area outside `region`. PRO to turn off |
 | `showOverlay` | `boolean` | `true` | Draws boxes and labels. PRO to turn off |
 | `overlayStyle` | `PlateOverlayStyle` | | PRO |
 | `mockImage` | `string \| number` | | A still image instead of the camera. |
@@ -304,8 +304,8 @@ The SDK sends small anonymous reports to `alpr.parkr.app`. They never contain de
 
 | Function | |
 | --- | --- |
-| `scanImage(uri, config?)` | `Promise<DetectedPlate[]>`. PRO. `config` takes `region`, `detectionThreshold`, `ocrThreshold` and `accelerator`. |
-| `loadModels(config?)` | Preloads the models, to avoid a delay on the first scan. |
+| `scanImage(uri, config?)` | `Promise<DetectedPlate[]>`. PRO. `config` takes `region` (normalized to the image), `detectionThreshold`, `ocrThreshold` and `accelerator`. |
+| `loadModels({ accelerator }?)` | Preloads the models, to avoid a delay on the first scan. |
 | `setTelemetryEnabled(enabled)` | Turns runtime telemetry on or off. Persisted on the device. |
 | `useCameraPermissions()`, `getCameraPermissionsAsync()`, `requestCameraPermissionsAsync()` | Expo's standard permission response. |
 | `toViewRect(bbox, frame, viewSize)` | Converts a normalized `bbox` to view coordinates, matching the aspect-fill preview. |

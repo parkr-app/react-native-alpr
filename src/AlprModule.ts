@@ -1,9 +1,9 @@
 import { requireOptionalNativeModule, UnavailabilityError } from 'expo-modules-core';
 import { Platform } from 'react-native';
-import type { AlprConfig, CameraPermissionResponse, DetectedPlate } from './types';
+import type { AlprConfig, CameraPermissionResponse, DetectedPlate, LoadModelsOptions } from './types';
 
 export interface AlprNativeModule {
-  loadModels(config: AlprConfig): Promise<void>;
+  loadModels(options: LoadModelsOptions): Promise<void>;
   scanImage(uri: string, config?: AlprConfig): Promise<DetectedPlate[]>;
   setTelemetryEnabled(enabled: boolean): void;
   setFrameworkVersion(version: string): void;
