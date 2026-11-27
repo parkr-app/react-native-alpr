@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { Linking, Platform, Settings } from 'react-native';
-import type { Accelerator, AlprConfig } from 'react-native-alpr';
+import type { Accelerator, AlprConfig, PlateOverlayStyle } from 'react-native-alpr';
 import { DEFAULT_MOCK_CAMERA_IMAGE, MOCK_CAMERA_IMAGES } from '../testImages';
 
 type ScanSettings = {
@@ -17,6 +17,40 @@ const DEFAULT_SETTINGS: ScanSettings = {
   singleScan: false,
 };
 
+export type OverlaySettings = {
+  showOverlay: boolean;
+  showRegion: boolean;
+  boxColor: string;
+  boxBorderWidth: number;
+  boxCornerRadius: number;
+  labelBackgroundColor: string;
+  labelTextColor: string;
+  labelFontSize: number;
+  showLabel: boolean;
+  showPlate: boolean;
+  showCountry: boolean;
+  showConfidence: boolean;
+};
+
+export const DEFAULT_OVERLAY: OverlaySettings = {
+  showOverlay: true,
+  showRegion: true,
+  boxColor: '#FFD60A',
+  boxBorderWidth: 3,
+  boxCornerRadius: 6,
+  labelBackgroundColor: '#FFD60A',
+  labelTextColor: '#1C1C1E',
+  labelFontSize: 13,
+  showLabel: true,
+  showPlate: true,
+  showCountry: true,
+  showConfidence: false,
+};
+
+export function toOverlayStyle({ showOverlay, showRegion, ...style }: OverlaySettings): PlateOverlayStyle {
+  return style;
+}
+
 type AlprSettingsContextValue = {
   settings: ScanSettings;
   setSettings: (settings: ScanSettings) => void;
@@ -27,6 +61,8 @@ type AlprSettingsContextValue = {
   mockImage: number;
   restrictRegion: boolean;
   setRestrictRegion: (restrictRegion: boolean) => void;
+  overlay: OverlaySettings;
+  setOverlay: (overlay: OverlaySettings) => void;
 };
 
 export function toAlprConfig(settings: ScanSettings): AlprConfig {
@@ -53,6 +89,7 @@ export function AlprSettingsProvider({ children }: { children: ReactNode }) {
   const mockCamera = mockImageName != null;
   const setMockCamera = (enabled: boolean) => setMockImageName(enabled ? DEFAULT_MOCK_CAMERA_IMAGE : null);
   const [restrictRegion, setRestrictRegion] = useState(false);
+  const [overlay, setOverlay] = useState(DEFAULT_OVERLAY);
 
   useEffect(() => {
     const apply = (url: string | null | undefined) => {
@@ -79,6 +116,8 @@ export function AlprSettingsProvider({ children }: { children: ReactNode }) {
         mockImage: MOCK_CAMERA_IMAGES[mockImageName ?? DEFAULT_MOCK_CAMERA_IMAGE]!,
         restrictRegion,
         setRestrictRegion,
+        overlay,
+        setOverlay,
       }}
     >
       {children}

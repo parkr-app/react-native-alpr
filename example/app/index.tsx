@@ -1,28 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { activateKeepAwakeAsync, deactivateKeepAwake } from 'expo-keep-awake';
 import { useIsFocused } from 'expo-router';
 import { Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { AlprCameraView, useCameraPermissions, type DetectedPlate } from 'react-native-alpr';
 import { SettingsModal } from '../components/SettingsModal';
-import { useAlprSettings } from '../contexts/AlprSettingsContext';
+import { toOverlayStyle, useAlprSettings } from '../contexts/AlprSettingsContext';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const ZOOM_LEVELS = [1, 2, 3, 5, 8];
-const SCAN_REGION = { x: 0.05, y: 0.38, width: 0.9, height: 0.3 };
+const SCAN_REGION = { x: 0.05, y: 0.12, width: 0.9, height: 0.25 };
 const KEEP_AWAKE_TAG = 'scan';
 
 export default function ScanScreen() {
   const { top, bottom } = useSafeAreaInsets();
   const [permission, requestPermission] = useCameraPermissions();
-  const { settings: config, showFps, mockCamera, mockImage, restrictRegion } = useAlprSettings();
+  const { settings: config, showFps, mockCamera, mockImage, restrictRegion, overlay } = useAlprSettings();
+  const overlayStyle = useMemo(() => toOverlayStyle(overlay), [overlay]);
   const [showSettings, setShowSettings] = useState(false);
   const [plates, setPlates] = useState<DetectedPlate[]>([]);
   const [scanned, setScanned] = useState<DetectedPlate | null>(null);
   const [torch, setTorch] = useState(false);
   const [zoom, setZoom] = useState(1);
   const isFocused = useIsFocused();
-  const scanning = isFocused && !showSettings && !scanned && (mockCamera || !!permission?.granted);
+  const scanning = isFocused && !scanned && (mockCamera || !!permission?.granted);
 
   useEffect(() => {
     if (!config.singleScan) setScanned(null);
@@ -63,7 +64,7 @@ export default function ScanScreen() {
     <View style={styles.container}>
       <AlprCameraView
         style={StyleSheet.absoluteFill}
-        isActive={!showSettings && !scanned}
+        isActive={!scanned}
         detectionThreshold={config.detectionThreshold}
         ocrThreshold={config.ocrThreshold}
         accelerator={config.accelerator}
@@ -71,6 +72,9 @@ export default function ScanScreen() {
         torch={torch}
         zoom={zoom}
         region={restrictRegion ? SCAN_REGION : undefined}
+        showRegion={overlay.showRegion}
+        showOverlay={overlay.showOverlay}
+        overlayStyle={overlayStyle}
         mockImage={mockCamera ? mockImage : undefined}
         onPlates={setPlates}
         onScan={config.singleScan ? setScanned : undefined}
