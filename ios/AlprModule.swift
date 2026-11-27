@@ -72,13 +72,12 @@ public class AlprModule: Module {
       Prop("recognizesPlates") { (view: AlprExpoView, value: Bool) in view.camera.recognizesPlates = value }
       Prop("scansPlates") { (view: AlprExpoView, value: Bool) in view.camera.scansPlates = value }
 
-      Events("onPlatesRaw", "onPlates", "onPlate", "onScan", "onError")
+      Events("onPlates", "onPlate", "onScan", "onError")
     }
   }
 }
 
 final class AlprExpoView: ExpoView, AlprCameraViewDelegate {
-  let onPlatesRaw = EventDispatcher()
   let onPlates = EventDispatcher()
   let onPlate = EventDispatcher()
   let onScan = EventDispatcher()
@@ -95,10 +94,6 @@ final class AlprExpoView: ExpoView, AlprCameraViewDelegate {
   override func layoutSubviews() {
     super.layoutSubviews()
     camera.frame = bounds
-  }
-
-  func alprCameraView(_ view: AlprCameraView, didDetectRaw plates: [AlprPlate], frameSize: CGSize) {
-    onPlatesRaw(PlatesEvent(plates.map(DetectedPlateRecord.init), frameSize: frameSize))
   }
 
   func alprCameraView(_ view: AlprCameraView, didDetect plates: [AlprPlate], frameSize: CGSize) {

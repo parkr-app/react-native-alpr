@@ -130,29 +130,21 @@ function Scanner() {
 
 ### Events
 
-Pick the event that matches what your app does:
-
-| Event | Fires | Use it for |
+| Event | Fires | |
 | --- | --- | --- |
-| `onPlate(plate)` | Once per plate, about 0.1 s after it is read clearly. Not again when the same plate briefly leaves and re-enters the view. | Continuous scanning: parking gates, patrol, logging every car that passes. PRO |
-| `onScan(plate)` | Once per activation, when the reads are certain: about 0.3 s of sharp, agreeing frames. Waits rather than guessing on a blurry plate. Picks the largest plate when several are in view. | Scanning one plate with the phone, where there is no second chance. PRO |
-| `onPlates(plates, frame)` | Every frame (see `throttle`), with the confirmed plates currently in view: consensus text, smoothed boxes. | Showing what is in view, your own overlay. |
-| `onPlatesRaw(plates, frame)` | Every frame (see `throttle`), with every plate read in that frame, unsmoothed. | Debugging, your own tracking. |
-
-All plates have the same shape, see [Types](#types).
+| `onPlate(plate)` | Once per plate. For continuous scanning. | PRO |
+| `onScan(plate)` | Once, when a plate is read with certainty. For scanning one plate. Fires again after `isActive` turns back on. | PRO |
+| `onPlates(plates, frame)` | Every frame, with the plates in view. For your own UI. | |
 
 ```tsx
-import { useState } from 'react';
-import { AlprCameraView, type DetectedPlate } from 'react-native-alpr';
-
 function ScanOnce({ onDone }: { onDone: (plate: string) => void }) {
-  const [scanned, setScanned] = useState<DetectedPlate | null>(null);
+  const [done, setDone] = useState(false);
   return (
     <AlprCameraView
       style={{ flex: 1 }}
-      isActive={!scanned}
+      isActive={!done}
       onScan={(plate) => {
-        setScanned(plate);
+        setDone(true);
         onDone(plate.plate);
       }}
     />
@@ -160,11 +152,7 @@ function ScanOnce({ onDone }: { onDone: (plate: string) => void }) {
 }
 ```
 
-`onScan` fires again after `isActive` goes from `false` back to `true`.
-
-**How frames are combined.** The OCR model reads every plate character by character and gives a probability for each character in each position. The SDK averages those probabilities over the recent frames, per position. Each frame's weight depends on its weakest character, so one sharp frame outweighs many blurry ones, and older frames count less as new ones arrive. A plate is confirmed only when every character, including where the plate ends, is clear. All timings are in seconds, so results arrive equally fast at 15 and at 60 FPS.
-
-To keep only some plates, filter in JavaScript, for example `plate.countryCode === 'NO'` or a regular expression on `plate.plate`.
+To keep only some plates, filter in JavaScript, for example on `plate.countryCode`.
 
 ### Photos (PRO)
 
@@ -174,35 +162,24 @@ import { scanImage } from 'react-native-alpr';
 const plates = await scanImage(photoUri);
 ```
 
-`scanImage` accepts `file://` and `http(s)://` URIs, plus `content://` on Android.
+Accepts `file://` and `http(s)://` URIs, plus `content://` on Android.
 
-### Accelerator (PRO)
-
-```tsx
-<AlprCameraView accelerator="gpu" />
-```
-
-`'gpu'` (the default) uses the GPU on Android and the GPU and Neural Engine on iOS. It falls back to the CPU when the device has no usable GPU, and in release builds without a license. `'cpu'` always runs on the CPU.
-
-### Torch, zoom and scan region (PRO)
+### Camera options (PRO)
 
 ```tsx
-<AlprCameraView torch={torchOn} zoom={2} region={{ x: 0.05, y: 0.4, width: 0.9, height: 0.25 }} />
+<AlprCameraView
+  torch={torchOn}
+  zoom={2}
+  region={{ x: 0.05, y: 0.4, width: 0.9, height: 0.25 }}
+  overlayStyle={{ boxColor: '#22c55e' }}
+/>
 ```
 
-`region` is normalized to the view. Only that part of the frame goes to the detector. That is faster, and it helps with distant plates because the crop is scaled up to the model's input size. The area outside is dimmed; `showRegion={false}` (PRO) turns that off.
-
-### Overlay style (PRO)
-
-```tsx
-<AlprCameraView overlayStyle={{ boxColor: '#22c55e', boxCornerRadius: 8, showConfidence: true }} />
-```
-
-To draw your own overlay instead, set `showOverlay={false}` (PRO) and map each `bbox` to view coordinates with `toViewRect(plate.bbox, frame, viewSize)`. `frame` is the second argument of `onPlates`.
+`region` scans only part of the view, which is faster and helps with distant plates. To draw your own overlay, set `showOverlay={false}` and convert boxes with `toViewRect(plate.bbox, frame, viewSize)`.
 
 ### Simulators and emulators
 
-Simulators have no camera. Pass `mockImage` to run the live pipeline on a still image. The overlay, tracking and events behave as with camera frames.
+Simulators have no camera. `mockImage` scans a still image instead:
 
 ```tsx
 <AlprCameraView mockImage={__DEV__ && isSimulator ? require('./plate.jpg') : undefined} />
@@ -268,24 +245,21 @@ The SDK sends small anonymous reports to `alpr.parkr.app`. They never contain de
 
 | Prop | Type | Default | |
 | --- | --- | --- | --- |
-| `isActive` | `boolean` | `true` | Set to `false` to stop the camera. |
-| `onPlate` | `(plate: DetectedPlate) => void` | | Each plate once. For continuous scanning. See [Events](#events). PRO |
-| `onScan` | `(plate: DetectedPlate) => void` | | One certain plate per activation. PRO |
-| `onPlates` | `(plates: DetectedPlate[], frame: FrameInfo) => void` | | Confirmed plates in view, smoothed. |
-| `onPlatesRaw` | `(plates: DetectedPlate[], frame: FrameInfo) => void` | | Every read in the current frame, unsmoothed. |
-| `onError` | `(error: { code, message }) => void` | | Camera or model errors. |
-| `throttle` | `number` | `200` | Minimum time between `onPlates` and `onPlatesRaw` calls, in milliseconds. PRO |
-| `accelerator` | `'gpu' \| 'cpu'` | `'gpu'` | CPU when no GPU is available. PRO for GPU |
-| `detectionThreshold` | `number` | `0.4` | Minimum detection confidence. PRO |
-| `ocrThreshold` | `number` | `0.3` | Minimum OCR confidence. PRO |
+| `isActive` | `boolean` | `true` | `false` stops the camera. |
+| `onPlate`, `onScan`, `onPlates` | | | See [Events](#events). |
+| `onError` | `(error: { code, message }) => void` | | |
+| `throttle` | `number` | `200` | Milliseconds between `onPlates` calls. PRO |
+| `accelerator` | `'gpu' \| 'cpu'` | `'gpu'` | GPU or Neural Engine, CPU as fallback. PRO |
+| `detectionThreshold` | `number` | `0.4` | PRO |
+| `ocrThreshold` | `number` | `0.3` | PRO |
 | `torch` | `boolean` | `false` | PRO |
-| `zoom` | `number` | `1` | Clamped to what the device supports. PRO |
-| `region` | `BoundingBox` | | Normalized `0..1`. PRO |
-| `showRegion` | `boolean` | `true` | Dims the area outside `region`. PRO to turn off |
-| `showOverlay` | `boolean` | `true` | Draws boxes and labels. PRO to turn off |
+| `zoom` | `number` | `1` | PRO |
+| `region` | `BoundingBox` | full view | Normalized `0..1`. PRO |
+| `showRegion` | `boolean` | `true` | Dims outside `region`. PRO to turn off |
+| `showOverlay` | `boolean` | `true` | PRO to turn off |
 | `overlayStyle` | `PlateOverlayStyle` | | PRO |
-| `mockImage` | `string \| number` | | A still image instead of the camera. |
-| `showFps` | `boolean` | `false` | FPS counter on the preview. |
+| `mockImage` | `string \| number` | | Still image instead of the camera. |
+| `showFps` | `boolean` | `false` | |
 
 `PlateOverlayStyle`:
 
@@ -304,11 +278,11 @@ The SDK sends small anonymous reports to `alpr.parkr.app`. They never contain de
 
 | Function | |
 | --- | --- |
-| `scanImage(uri, config?)` | `Promise<DetectedPlate[]>`. PRO. `config` takes `region` (normalized to the image), `detectionThreshold`, `ocrThreshold` and `accelerator`. |
-| `loadModels({ accelerator }?)` | Preloads the models, to avoid a delay on the first scan. |
+| `scanImage(uri, config?)` | `Promise<DetectedPlate[]>`. `config` takes `region`, `detectionThreshold`, `ocrThreshold` and `accelerator`. PRO |
+| `loadModels({ accelerator }?)` | Preloads the models to avoid a delay on the first scan. |
 | `setTelemetryEnabled(enabled)` | Turns runtime telemetry on or off. Persisted on the device. |
 | `useCameraPermissions()`, `getCameraPermissionsAsync()`, `requestCameraPermissionsAsync()` | Expo's standard permission response. |
-| `toViewRect(bbox, frame, viewSize)` | Converts a normalized `bbox` to view coordinates, matching the aspect-fill preview. |
+| `toViewRect(bbox, frame, viewSize)` | Converts a `bbox` to view coordinates. |
 
 ### Types
 
@@ -324,9 +298,7 @@ type DetectedPlate = {
 };
 ```
 
-- `bbox` is normalized to `0..1`, relative to the upright frame or image.
-- `country` is the region predicted by the OCR model, e.g. `"Norway"`. `countryCode` is its ISO code, e.g. `"NO"`, or `null`.
-- All confidences are in `0..1`. `ocrConfidence` is the confidence of the least certain character, so one unreadable character makes it low. In `onPlates`, `onPlate` and `onScan` it is combined over the frames.
+`bbox` and all confidences are in `0..1`. `countryCode` is an ISO code such as `"NO"`, or `null`.
 
 ### Errors
 
@@ -334,7 +306,7 @@ Errors from `scanImage` and `onError` carry a `code`:
 
 | Code | Meaning |
 | --- | --- |
-| `ERR_LICENSE_REQUIRED` | A PRO feature was used in a release build without a valid key. |
+| `ERR_LICENSE_REQUIRED` | PRO feature in a release build without a valid key. |
 | `ERR_MODEL_LOAD` | The bundled models could not be loaded. |
 | `ERR_CAMERA` | No camera, or no camera permission. |
 | `ERR_FILE` | The image could not be read. |

@@ -19,8 +19,6 @@ export type AlprCameraViewProps = {
   detectionThreshold?: number;
   ocrThreshold?: number;
   accelerator?: Accelerator;
-  /** Every plate read in the current frame, unsmoothed. */
-  onPlatesRaw?: (plates: DetectedPlate[], frame: FrameInfo) => void;
   /** Confirmed plates in view, with consensus text and smoothed boxes. */
   onPlates?: (plates: DetectedPlate[], frame: FrameInfo) => void;
   /** Each plate once, when several frames agree. For continuous scanning. */
@@ -40,13 +38,12 @@ type PlatesEvent = { nativeEvent: { plates: DetectedPlate[] } & FrameInfo };
 
 type NativeProps = Omit<
   AlprCameraViewProps,
-  'onPlatesRaw' | 'onPlates' | 'onPlate' | 'onScan' | 'onError' | 'overlayStyle' | 'mockImage'
+  'onPlates' | 'onPlate' | 'onScan' | 'onError' | 'overlayStyle' | 'mockImage'
 > & {
   overlayStyle?: NativeOverlayStyle;
   mockImage?: string;
   recognizesPlates: boolean;
   scansPlates: boolean;
-  onPlatesRaw?: (event: PlatesEvent) => void;
   onPlates?: (event: PlatesEvent) => void;
   onPlate?: (event: { nativeEvent: { plate: DetectedPlate } }) => void;
   onScan?: (event: { nativeEvent: { plate: DetectedPlate } }) => void;
@@ -94,7 +91,6 @@ export function AlprCameraView({
   zoom = 1,
   overlayStyle,
   mockImage,
-  onPlatesRaw,
   onPlates,
   onPlate,
   onScan,
@@ -129,7 +125,6 @@ export function AlprCameraView({
       mockImage={resolveImageUri(mockImage)}
       recognizesPlates={!!onPlate}
       scansPlates={!!onScan}
-      onPlatesRaw={({ nativeEvent: { plates, frameWidth, frameHeight } }) => onPlatesRaw?.(plates, { frameWidth, frameHeight })}
       onPlates={({ nativeEvent: { plates, frameWidth, frameHeight } }) => onPlates?.(plates, { frameWidth, frameHeight })}
       onPlate={(event) => onPlate?.(event.nativeEvent.plate)}
       onScan={(event) => onScan?.(event.nativeEvent.plate)}

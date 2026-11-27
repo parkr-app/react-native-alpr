@@ -78,7 +78,7 @@ class AlprModule : Module() {
       Prop("recognizesPlates") { view: AlprExpoView, value: Boolean -> view.camera.recognizesPlates = value }
       Prop("scansPlates") { view: AlprExpoView, value: Boolean -> view.camera.scansPlates = value }
 
-      Events("onPlatesRaw", "onPlates", "onPlate", "onScan", "onError")
+      Events("onPlates", "onPlate", "onScan", "onError")
     }
   }
 
@@ -89,7 +89,6 @@ class AlprModule : Module() {
 class AlprExpoView(context: Context, appContext: AppContext) : ExpoView(context, appContext) {
   override val shouldUseAndroidLayout: Boolean = true
 
-  val onPlatesRaw by EventDispatcher<PlatesEvent>()
   val onPlates by EventDispatcher<PlatesEvent>()
   val onPlate by EventDispatcher<PlateEvent>()
   val onScan by EventDispatcher<PlateEvent>()
@@ -98,10 +97,6 @@ class AlprExpoView(context: Context, appContext: AppContext) : ExpoView(context,
 
   init {
     camera.listener = object : AlprCameraViewListener {
-      override fun onPlatesRaw(view: AlprCameraView, plates: List<AlprPlate>, frameWidth: Int, frameHeight: Int) {
-        this@AlprExpoView.onPlatesRaw(PlatesEvent(plates.map(::DetectedPlateRecord), frameWidth, frameHeight))
-      }
-
       override fun onPlates(view: AlprCameraView, plates: List<AlprPlate>, frameWidth: Int, frameHeight: Int) {
         this@AlprExpoView.onPlates(PlatesEvent(plates.map(::DetectedPlateRecord), frameWidth, frameHeight))
       }
